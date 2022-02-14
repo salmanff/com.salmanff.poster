@@ -1,0 +1,104 @@
+{
+
+  "identifier": "com.salmanff.poster",
+  "display_name":"Poster",
+  "version": "0.0.301",
+  "description": "A blog posting app with the minimal functionalities",
+  "app_url": "https://github.com/salmanff/com.salmanff.poster",
+  "manifest_url": "https://github.com/salmanff/com.salmanff.poster/blob/main/manifest.json",
+
+	"pages": {
+		"index": {
+			"page_title":"Poster",
+			"html_file":"index.html",
+			"css_files": ["static/pell.css","static/font-awesome.min.css", "static/poster_main.css"],
+			"script_files": ["jlos-frozen.js", "pell.js", "poster.js"]
+		}
+	},
+
+	"public_pages": {
+		"index": {
+			"page_title":"Poster Blog posts",
+			"html_file":"poster_papp_page.html",
+			"css_files": ["poster_pages.css"],
+			"initial_data": {"url": "/v1/pdbq/com.salmanff.poster"},
+			"script_files": ["poster_papp_page.js"],
+			"header_map": {
+				"title":{"field_name":"Recent posts"},
+				"application-description":{"text":"Poster is a simple blog posting tool for freezr"}
+			}
+		},
+
+		"post": {
+			"page_title":"Poster blog post",
+			"html_file":"poster_ppage.html",
+			"css_files": ["poster_pages.css"],
+			"script_files": ["poster_ppage.js"],
+			"header_map": {
+				"author":{"field_name":"_owner","text":"User:"},
+				"published":{"field_name":"__date_published"},
+				"title":{"field_name":"title"},
+				"image":{"field_name":"mainimgurl"},
+				"description":{"field_name":"summaryText"},
+				"twitter:card":{"field_name":"twitterCard"},
+				"twitter:title":{"field_name":"title"},
+				"twitter:image":{"field_name":"mainimgurl"},
+				"twitter:description":{"field_name":"summaryText"},
+				"application-description":{"text":"Poster is a simple blog posting tool for freezr"}
+			}
+		}
+	},
+
+
+	"app_tables": {
+		"posts": {
+			"strictly_Adhere_To_schema":false,
+			"field_names":{
+							"created_locally": {
+								"description":"Date Created (device time)",
+								"type": "date"
+							},
+							"fj_modified_locally": {
+								"description":"Date Modified (device time)",
+								"type": "date"
+							},
+							"fj_deleted": {
+								"description":"deleted",
+								"type": "bool"
+							},
+							"body": {
+								"description":"text of blog",
+								"type": "html"
+							}
+						},
+
+			"rss_map": {
+				"title": "title",
+				"description":"summaryText",
+				"pubDate":"__date_published",
+				"imgurl":"mainimgurl",
+				"imgtitle":"mainimgtxt"
+			}
+
+		}
+	},
+
+	"permissions": [
+		 {
+      "name": "publish_posts",
+			"type":"share_records",
+			"table_id": "com.salmanff.poster.posts",
+			"description": "Publish your posts",
+			"return_fields": ["title","shortbody","_owner","labels","body","_date_Modified"],
+			"search_fields": ["title","body","labels"],
+			"pcard":"postcard.html",
+			"ppage":"post"
+		},
+		{
+      "name":"publish_picts",
+			"type":"share_records",
+			"table_id": "com.salmanff.poster.files",
+			"description": "Publish your files"
+		}
+	]
+}

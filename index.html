@@ -1,0 +1,126 @@
+	<!--
+	poster index.html - a simply blog posting app for
+	 -->
+		<div id="warnings" class="warnings_mobile" style="display:none"></div>
+
+		<div class="writing_outer">
+			<div id="writingDiv">
+			<div id="writingTopButts">
+				<div id="writingTopButtsInner">
+					<span class="fa fa-bars clickable topBut_Desktop" id="click_menu_0" >&nbsp;</span>
+					<span class="clickable topText_DesktopLeft" id="click_menu_1">Menu &nbsp; &nbsp; &nbsp; </span>
+					<span class="fa fa-eye clickable topBut_Desktop" id="click_chgView_0" >&nbsp;</span>
+					<span class="clickable topText_DesktopLeft" id="click_chgView_1">Change View &nbsp; &nbsp; &nbsp; </span>
+
+					<span class="fa fa-trash clickable topBut_Desktop" id="click_delete_0" >&nbsp;</span>
+					<span class="clickable topText_DesktopLeft" id="click_delete_1">delete &nbsp; &nbsp; &nbsp; </span>
+
+					<span class="fa fa-save topBut_Desktop clickable" id="click_save_0" >&nbsp;</span>
+					<span class="topText_DesktopLeft clickable" id="click_save_1">save &nbsp; &nbsp; &nbsp; </span>
+
+					<span class="fa fa-remove clickable topBut_Desktop " id="click_unpublish_0" >&nbsp;</span>
+					<span class="topText_DesktopLeft clickable" id="click_unpublish_1">unPublish</span>
+
+					<span class="fa fa-upload clickable topBut_Desktop fright" id="click_publish_0" >&nbsp;</span>
+					<span class="clickable topText_DesktopRight fright" id="click_publish_1">Publish</span>
+					<span class="clickable topText_DesktopRight fright" id="click_publish_2">Republish</span>
+
+				</div>
+			</div>
+			<div id="editView">
+				<div class="oneliner title_Desktop"  contentEditable=true id="titleDiv" data-placeholder="Blog post title"></div>
+				<div id="pell-editor"class="editor_Desktop"></div>
+				<div class="oneliner label_Desktop" contentEditable=true id="labelDiv" data-placeholder="tags (optional)"></div>
+			</div>
+			<div id="pubView">
+				<div id="pubViewTitle"></div>
+				<div id="pubViewBody"></div>
+				<div id="pubViewLabels"></div>
+			</div>
+
+			<div id="postMetaDiv"> &nbsp; Date Modified: </div>
+		</div>
+
+		</div>
+
+		<div id="click_menuBackGround">
+		</div>
+
+		<div id="click_dialogueBackGround" style="display:none">
+			<div id="dialogue_Inner">
+				<div id="dialogue_instruct1" class="dialogue_text"></div>
+
+		 		<div id="dialogue_uploader"> <input  id="picture_file" type="file" name="file"/></div>
+		 		<div>
+			 		<span id="click_uploadPict" class ="dialogueButts" >Upload now</span>
+		 		</div>
+
+		 		<div id="dialogue_imggallery">IMAGE GALLERY</div>
+
+				<div id="dialogue_instruct2" class="dialogue_text"></div>
+
+				<div class="oneliner" id="dialogue_inputText" contentEditable=true></div>
+
+				<form id="dialogue_pictSize" name="pictSizeRadioForm" class="dialogue_text">
+					<div class="dialogue_radioCaption">Size of Picture:</div>
+					<input class="pictsRadio" type="radio" name="pictSizeRadio" value="100%" checked="checked">100%
+					<input class="pictsRadio" type="radio" name="pictSizeRadio" value="75%">75%
+					<input class="pictsRadio" type="radio" name="pictSizeRadio" value="50%">50%
+					<input class="pictsRadio" type="radio" name="pictSizeRadio" value="10%">10%
+				</form>
+				<form id="dialogue_pictFloat"class="dialogue_text" name="pictFloatRadioForm">
+					<div  class="dialogue_radioCaption">Wrap text:</div>
+					<input class="pictsRadio" type="radio" name="pictFloatRadio" value="none" checked="checked">No
+					<input class="pictsRadio" type="radio" name="pictFloatRadio" value="left">right of picture
+					<input class="pictsRadio" type="radio" name="pictFloatRadio" value="right">left of picture
+				</form>
+
+				<div id="dialogue_checkUniqueness">
+					<span class ="dialogueButts" id="dialogue_checkUniqueButt">&nbsp; Check Uniquness of ID &nbsp;</span>
+					<br>
+				</div>
+
+				<div id ="dialogue_okays" class="dialogue_center">
+					<span class ="dialogueButts" id="dialogue_cancelButt">Cancel</span>
+					<span class ="dialogueButts" id="dialogue_okButt">&nbsp; &nbsp; OK &nbsp; &nbsp;</span>
+				</div>
+		  	</div>
+
+		</div>
+
+
+		<div id="leftBar" class="leftBar_Desktop">
+			<div id="listingTopButts">
+				<span class="topText_Desktop"><img src="/app_files/com.salmanff.poster/static/logo.png" height="40px"></span>
+				<span class="fa fa-plus clickable topBut_Desktop fright" id="click_newPost_0" >&nbsp;</span>
+				<span class="clickable topText_Desktop fright" id="click_newPost_1">Write a New Blog Post</span>
+			</div>
+
+			<div id="searchOuter" class="leftBarActionsOuter">
+				<div class="oneliner" id="searchBoxDiv" contentEditable=true></div>
+
+				<div class="leftBarSearchButts clickable"  id="click_doSearch">Search</div>
+				<div class="leftBarSearchButts clickable" style="display:none" id="click_clearSearch">Clear results</div>
+			</div>
+
+			<div id="pubOrDraftOuter" class="leftBarActionsOuter">
+			<input id="radioShow_Drafts" class="showRadio" type="radio" name="editList" value="showDrafts">Show Drafts Only
+			<input id="radioShow_Pub" class="showRadio" type="radio" name="editList" value="showPub">Published Posts Only
+			<input id="radioShow_all" class="showRadio" type="radio" name="editList" value="showAll" checked="checked">Show All
+			</div>
+
+			<div id="leftPostsList" class="leftBarActionsOuter"> </div>
+
+			<div class="spacer"> </div>
+
+			<div id="onlineSearchedPostsList"></div>
+
+			<div class="leftBarSearchButts clickable" id="click_searchOnline_1" style="display:none">More Online</div>
+
+
+
+		</div>
+
+		<div id="pastebin" style="display:none"><span> </span></div>
+
+		<div id="finalView"></div>

@@ -1,0 +1,43 @@
+
+
+
+	<!--
+	posterppage.html - pubic page for posts from poster
+	 -->
+<div class="writing_outer">
+	<div class="writingDiv">
+
+		<div class="poster_title">
+		  <span class="freezr_public_app_title">Blog Posts</span>
+			<br>
+			<a href="/ppage" id="toplink">See All Public Posts</a>
+		</div>
+
+
+		{{#results}}
+
+		<div class="one_post_outer">
+			<span class="pubinfo">Posted by {{_data_owner}} on: {{__date_published}}</span>
+			<div class="title_spacer">
+				<a class="post_title" href="/{{_id}}">
+				      {{#title}} {{title}} {{/title}} {{^title}}  {{/title}}
+				</a>
+			</div>
+
+		    <div class="post_body_short" {{^body}} style="display:none" {{/body}}>
+		          {{{body}}}
+		    </div>
+
+
+		    <div class="post_footer" >
+					<span class="expandpost">... See Full Post</span>
+		    </div>
+				<div class="real_date">{{_date_published}}</div>
+	    </div>
+		{{/results}}
+
+	    {{^results}} <div id ="nopostfound">NO MORE POSTS Found</div> {{/results}}
+
+		<div id="bottomdate" {{^results}}style="display:none"{{/results}}>Earlier posts</div>
+	</div>
+</div>

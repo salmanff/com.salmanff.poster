@@ -1,0 +1,47 @@
+
+
+<div style='font-family: "Lucida Sans Unicode", "Helvetica Neue", "Arial", sans-serif; font-size: 14px; padding:5px;'>
+	<div id="{{_id}}">
+    <a href="/{{_id}}" style="position: relative; float: right; width: 40px;">
+		  <img src="/papp_files/{{_data_owner}}/com.salmanff.poster/public/static/poster_icon.png" style="width: 35px;"/>
+    </a>
+
+		<div style="font-size:12px; font-style: italic; color:#3f51b5;">
+      Posted by {{_data_owner}}
+      <span {{^__date_published}}style="display:none"{{/__date_published}}>
+          on {{__date_published}}
+      </span>
+    </div>
+
+
+    <div  style="font-size:16px; font-weight: bold; color:#3f51b5;">
+      <a href="/{{_id}}">
+      {{#title}}{{title}}{{/title}}</a>
+    </div>
+
+
+    <style type="text/css">
+      @media all and (max-width: 450px) {.com_salmanff_poster_pix_holder {width:100%;}}
+      @media all and (min-width: 451px) {.com_salmanff_poster_pix_holder {max-width:250px;}};
+    </style>
+
+    <div class="com_salmanff_poster_pix_holder" style="text-align: center; max-height: 500px; overflow: hidden;display:{{^mainimgurl}}none;{{/mainimgurl}}{{#mainimgurl}}block; margin-right:5px;{{/mainimgurl}} float:right;"><img src="{{mainimgurl}}" width="100%" ></div>
+
+    <div class="" style="font-size:14px; color:grey;">{{#summaryText}} {{{summaryText}}} {{/summaryText}}
+      {{^summaryText}}{{{body}}}{{/summaryText}}
+
+      <br>
+
+      <a href="/{{_id}}">...</a>
+      <br>
+
+    </div>
+
+  </div>
+
+	<div class="info_freezr_vulog_pix_holder" style="text-align: center; max-height: 200px; overflow: hidden;display:{{^mainImage}}none;{{/mainImage}}{{#mainImage}}block; margin-right:5px;{{/mainImage}} float:left;"><img src="{{mainImage}}" width="100%" ></div>
+
+	<div style="color:grey;{{^labels}}display:none{{/labels}}">
+		labels: {{#labels}} {{.}}{{/labels}}
+	</div>
+</div>

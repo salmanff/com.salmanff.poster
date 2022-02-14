@@ -1,0 +1,119 @@
+body {
+  font-family: "Lucida Sans Unicode", "Helvetica Neue", "Arial", sans-serif;
+  font-size: 10pt;
+  margin: 0;
+  padding: 0;
+}
+a {
+    color: #178699;
+    text-decoration: none;
+}
+.smalltop {
+    font-size: 10px;
+    color: #b0dbe2;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+#toplink {
+  color:grey;
+  font-size:12px;
+}
+
+.poster_title {
+  font-size:24px;
+  font-weight:bold;
+  width: 100%;
+  text-align: left;
+  color: #178699;
+}
+.top_logo_poster {
+    width: 20px;
+    padding: 5px;
+    float:right;
+}
+.top_logo_text {
+  float:right;
+  margin-top: -10px;
+}
+
+.writing_outer {
+    background-color: #b0dbe2 ;
+    text-align:center;
+    border-bottom: 1px solid #b0dbe2;
+    margin:0;
+}
+.writingDiv{
+    padding-left:20px;
+    padding-right:20px;
+    text-align:left;
+    max-width:600px;
+    padding-top:0;
+    margin:0 auto;
+    background-color:white;
+
+}
+.one_post_outer {
+    margin: 5px;
+    border-top:2px solid darkgrey;
+    padding-top: 10px;
+    margin: 5px;
+}
+.title_top{
+  border-bottom:2px solid lightgrey;
+}
+.post_title{
+    font-size: 28px;
+    font-weight: bold;
+    padding-top: 20px;
+    color: #178699;
+}
+.title_spacer {
+  margin-top: 15px;
+}
+.post_body_short{
+    font-size: 16px;
+    max-height: 400px;
+    overflow:hidden;
+}
+.post_body_full{
+    font-size: 16px;
+    margin-bottom: 20px;
+    max-height: none;
+}
+.post_footer{
+    border-top: 1px solid darkgrey;
+    padding-bottom: 20px;
+}
+.pubinfo{
+  font-style: italic;
+  font-size: 10px;
+  float:right;
+  color: grey;
+}
+.expandpost {
+  font-weight:bold;
+  color:darkgrey;
+  cursor: pointer;
+}
+.real_date {
+    display: none;
+}
+#nopostfound {
+    width:100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+    color: #178699;
+    font-size:18px;
+    padding-bottom: 300px;
+}
+#bottomdate {
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: right;
+    color: #178699;
+    font-style: italic;
+    cursor: pointer;
+}

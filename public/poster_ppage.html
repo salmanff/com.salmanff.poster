@@ -1,0 +1,38 @@
+
+
+
+	<!--
+	posterppage.html - pubic page for posts from poster
+	 -->
+
+<div class="writing_outer">
+	<div class="writingDiv">
+
+		<div class="poster_title">
+			<img src="/papp_files/{{_data_owner}}/com.salmanff.poster/public/static/poster_icon.png" class="top_logo_poster"/>
+      <div>
+        <span class="smalltop"><a class ="smalltop" href="/ppage">Home (public)</a></span>
+        <span class="smalltop"><a class ="smalltop" href="/papp/{{_data_owner}}/com.salmanff.poster">All Posts</a></span>
+      </div>
+      <br/>
+			<div class="poster_title">
+				      {{#title}} {{title}} {{/title}} {{^title}} {{__date_published}} {{/title}}
+			</div>
+		</div>
+    <br/>
+
+		<div class="one_post_outer">
+		    <div class="post_body_full" {{^body}} style="display:none" {{/body}}>
+		          {{{body}}}
+		    </div>
+
+		    <div class="post_footer" >
+		          posted by {{_data_owner}} on: {{__date_published}}
+		    </div>
+		    <div class="real_date">{{_date_published}}</div>
+	  </div>
+
+	</div>
+
+
+</div>
