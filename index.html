@@ -90,26 +90,26 @@
 
 
 		<div id="leftBar" class="leftBar_Desktop">
-			<div id="listingTopButts">
+			<div id="listingTopButts" style="display:none">
 				<span class="topText_Desktop"><img src="/app_files/com.salmanff.poster/static/logo.png" height="40px"></span>
 				<span class="fa fa-plus clickable topBut_Desktop fright" id="click_newPost_0" >&nbsp;</span>
 				<span class="clickable topText_Desktop fright" id="click_newPost_1">Write a New Blog Post</span>
 			</div>
 
-			<div id="searchOuter" class="leftBarActionsOuter">
+			<div id="searchOuter" class="leftBarActionsOuter" style="display:none">
 				<div class="oneliner" id="searchBoxDiv" contentEditable=true></div>
 
 				<div class="leftBarSearchButts clickable"  id="click_doSearch">Search</div>
 				<div class="leftBarSearchButts clickable" style="display:none" id="click_clearSearch">Clear results</div>
 			</div>
 
-			<div id="pubOrDraftOuter" class="leftBarActionsOuter">
+			<div id="pubOrDraftOuter" class="leftBarActionsOuter" style="display:none">
 			<input id="radioShow_Drafts" class="showRadio" type="radio" name="editList" value="showDrafts">Show Drafts Only
 			<input id="radioShow_Pub" class="showRadio" type="radio" name="editList" value="showPub">Published Posts Only
 			<input id="radioShow_all" class="showRadio" type="radio" name="editList" value="showAll" checked="checked">Show All
 			</div>
 
-			<div id="leftPostsList" class="leftBarActionsOuter"> </div>
+			<div id="leftPostsList" class="leftBarActionsOuter" style="display:none"> </div>
 
 			<div class="spacer"> </div>
 
@@ -117,6 +117,10 @@
 
 			<div class="leftBarSearchButts clickable" id="click_searchOnline_1" style="display:none">More Online</div>
 
+      <div class="leftBarActionsOuter" id="startsyncloader" align="center">
+        <div > <br> Hold on... Syncing with server... <br><br></div>
+        <img src="/app_files/public/info.freezr.public/public/static/ajaxloaderBig.gif" alt="">
+      </div>
 
 
 		</div>

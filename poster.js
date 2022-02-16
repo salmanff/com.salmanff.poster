@@ -44,7 +44,7 @@ freezr.initPageScripts = function () {
     },
     addConflistAsNew: null,
     handleConflictedItem: handleConflictedPost,
-    saver: 'dosave'
+    saver: 'nosave'
   })
 
   // import { exec, init } from 'pell'
@@ -110,6 +110,7 @@ freezr.initPageScripts = function () {
       populateLeftPanel()
     }
   }
+
   document.getElementById('radioShow_Drafts').onclick = function () { stats.filterPublished = 'drafts'; populateLeftPanel() }
   document.getElementById('radioShow_Pub').onclick = function () { stats.filterPublished = 'pub'; populateLeftPanel() }
   document.getElementById('radioShow_all').onclick = function () { stats.filterPublished = 'all'; populateLeftPanel() }
@@ -137,6 +138,13 @@ freezr.initPageScripts = function () {
   if (!wrongId) {
     doSyncPosts(function () {
       syncEndCB()
+
+      document.getElementById('pubOrDraftOuter').style.display = 'block'
+      document.getElementById('searchOuter').style.display = 'block'
+      document.getElementById('leftPostsList').style.display = 'block'
+      document.getElementById('listingTopButts').style.display = 'block'
+      document.getElementById('startsyncloader').style.display = 'none'
+
       if (poster.data.posts.length === 0) {
         toggleLeftMenu(true)
         doClick.newPost()
@@ -180,8 +188,6 @@ var savePost = function (forceSaveAndSync) {
     const bodyChanged = (currPostPointer.body !== bodyFromHTML)
     const titleChanged = (currPostPointer.title !== titleFromHTML)
     const labelsChanged = (currPostPointer.labels.join(' ') !== theLabelText)
-
-
 
     if (titleChanged || bodyChanged || labelsChanged || forceSaveAndSync) {
       if (bodyChanged) currPostPointer.body = bodyFromHTML
