@@ -354,6 +354,7 @@ var nowPublishOrUnpublishCurrentPost = function (doPublish, pid, postPointer) {
         }
         freezr.perms.shareRecords(postPointer._id, options, function (err, returndata) {
           var d = freezr.utils.parse(returndata)
+          console.log('returndata' , { d })
           if (err) d = { error: err.message, issues: err.message }
           if (d && d.issues && d.issues.length > 0) console.warn('INTERNAL ERROR: ' + d.issues)
           if (!d || d.err || d.error) {
@@ -369,7 +370,7 @@ var nowPublishOrUnpublishCurrentPost = function (doPublish, pid, postPointer) {
             if (!postPointer._accessible._public['com_salmanff_poster/publish_posts']) postPointer._accessible._public['com_salmanff_poster/publish_posts'] = { }
             postPointer._accessible._public['com_salmanff_poster/publish_posts'] = {
               granted: true,
-              public_id: d._publicid,
+              public_id: pid,
               _date_published: d._date_published
             }
             showCurrentPost()
@@ -520,6 +521,9 @@ const getPublishStats = function (aRecord) {
   // onsole.log((aRecord && aRecord._accessible && aRecord._accessible._public && aRecord._accessible._public['com_salmanff_poster/publish_posts']) ? aRecord._accessible._public['com_salmanff_poster/publish_posts'] : {})
   return (aRecord && aRecord._accessible && aRecord._accessible._public && aRecord._accessible._public['com_salmanff_poster/publish_posts']) ? aRecord._accessible._public['com_salmanff_poster/publish_posts'] : {}
 }
+const isPublic = function (aRecord) {
+  return getPublishStats(aRecord).granted
+}
 // leftmenu
 var toggleLeftMenu = function (doHide) {
   document.getElementById('click_menuBackGround').style.display = (doHide ? 'none' : 'block')
@@ -549,8 +553,8 @@ var populateLeftPanel = function () {
       let hasWords = true
       searchWords.forEach((aSearchWord) => {
         if (stats.filterPublished !== 'all') {
-          if (stats.filterPublished === 'drafts' && aPost._date_published) hasWords = false
-          if (stats.filterPublished === 'pub' && !aPost._date_published) hasWords = false
+          if (stats.filterPublished === 'drafts' && isPublic(aPost)) hasWords = false
+          if (stats.filterPublished === 'pub' && !isPublic(aPost)) hasWords = false
         }
         if (hasWords === true &&
         aPost.title.toLowerCase().indexOf(aSearchWord) < 0 &&
@@ -646,7 +650,7 @@ var doClick = {
     }
   },
   save: function () {
-    savePost()
+    savePost(true)
   },
   chgView: function () {
     if (document.getElementById('pubView').style.display === 'none') {
@@ -711,6 +715,7 @@ var doSyncPosts = function (callFwd) {
       numItemsToFetchOnStart: NUM_NOTES_TO_DOWNLOAD
     })
   } else {
+    if (callFwd) callFwd('Syncing already in progress')
     console.log('Syncing already in progress')
   }
 }
