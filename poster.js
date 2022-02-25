@@ -319,8 +319,7 @@ const publishPictsThenPost = function (doPublish, pid, currPostPointer) {
           }
         })
         savePost()
-        alert('then going to post')
-      // nowPublishOrUnpublishCurrentPost(doPublish, pid, currPostPointer)
+        nowPublishOrUnpublishCurrentPost(doPublish, pid, currPostPointer)
       }
     })
   } else {
