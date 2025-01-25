@@ -4,6 +4,7 @@
   "display_name":"Poster",
   "version": "0.0.301",
   "description": "A blog posting app with the minimal functionalities",
+	"content_type": "blog",
   "app_url": "https://github.com/salmanff/com.salmanff.poster",
   "manifest_url": "https://github.com/salmanff/com.salmanff.poster/blob/main/manifest.json",
 

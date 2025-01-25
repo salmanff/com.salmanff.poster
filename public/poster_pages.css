@@ -21,7 +21,7 @@ a {
 }
 
 .poster_title {
-  font-size:24px;
+  font-size:36px;
   font-weight:bold;
   width: 100%;
   text-align: left;
@@ -38,16 +38,17 @@ a {
 }
 
 .writing_outer {
-    background-color: #b0dbe2 ;
+    background-color: #dbfaff8a;
     text-align:center;
     border-bottom: 1px solid #b0dbe2;
+    min-height: 500px;
     margin:0;
 }
 .writingDiv{
     padding-left:20px;
     padding-right:20px;
     text-align:left;
-    max-width:600px;
+    max-width:800px;
     padding-top:0;
     margin:0 auto;
     background-color:white;
@@ -63,7 +64,7 @@ a {
   border-bottom:2px solid lightgrey;
 }
 .post_title{
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     padding-top: 20px;
     color: #178699;
@@ -77,24 +78,25 @@ a {
     overflow:hidden;
 }
 .post_body_full{
-    font-size: 16px;
+    font-size: 20px;
     margin-bottom: 20px;
     max-height: none;
 }
 .post_footer{
-    border-top: 1px solid darkgrey;
     padding-bottom: 20px;
+    text-align: right;
+    font-style: italic;
 }
 .pubinfo{
   font-style: italic;
   font-size: 10px;
-  float:right;
+  text-align:right;
   color: grey;
 }
 .expandpost {
-  font-weight:bold;
   color:darkgrey;
   cursor: pointer;
+
 }
 .real_date {
     display: none;

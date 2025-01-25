@@ -10,19 +10,18 @@
 		<div class="poster_title">
 		  <span class="freezr_public_app_title">Blog Posts</span>
 			<br>
-			<a href="/public" id="toplink">See All Public Posts</a>
 		</div>
 
 
 		{{#results}}
 
 		<div class="one_post_outer">
-			<span class="pubinfo">Posted by {{_data_owner}} on: {{__date_published}}</span>
 			<div class="title_spacer">
 				<a class="post_title" href="/{{_id}}">
 				      {{#title}} {{title}} {{/title}} {{^title}}  {{/title}}
 				</a>
 			</div>
+			<div class="pubinfo">Posted by {{_data_owner}} on: {{__date_published}}</div>
 
 		    <div class="post_body_short" {{^body}} style="display:none" {{/body}}>
 		          {{{body}}}
@@ -30,7 +29,7 @@
 
 
 		    <div class="post_footer" >
-					<span class="expandpost">... See Full Post</span>
+					<span class="expandpost">Expand to full post ..</span>
 		    </div>
 				<div class="real_date">{{_date_published}}</div>
 	    </div>
