@@ -2,17 +2,9 @@
 
 <div style='font-family: "Lucida Sans Unicode", "Helvetica Neue", "Arial", sans-serif; font-size: 14px; padding:5px;'>
 	<div id="{{_id}}">
-    <a href="/papp/{{_data_owner}}/com.salmanff.poster" style="position: relative; float: right; width: 40px;">
-		  <img src="/papp_files/{{_data_owner}}/com.salmanff.poster/public/static/poster_icon.png" style="width: 35px;"/>
+    <a href="/papp/@{{_data_owner}}/com.salmanff.poster" style="position: relative; float: right; width: 40px;">
+		  <img src="/app_files/@{{_data_owner}}/com.salmanff.poster/public/static/poster_icon.png" style="width: 35px;"/>
     </a>
-
-		<div style="font-size:12px; font-style: italic; color:#3f51b5;">
-      Posted by {{_data_owner}}
-      <span {{^__date_published}}style="display:none"{{/__date_published}}>
-          on {{__date_published}}
-      </span>
-    </div>
-
 
     <div  style="font-size:16px; font-weight: bold; color:#3f51b5;">
       <a href="/{{_id}}">

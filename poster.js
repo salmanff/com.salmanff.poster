@@ -238,14 +238,14 @@ var getSuggestedId = function () {
   parts = parts.slice(0, RANDOM_WORD_LEN - 1)
   title = parts.join('-')
   title = nowDate() + '-' + title
-  if (!freezrMeta.adminUser) title = '@' + freezrMeta.userId + '/' + title
+  if (!freezrMeta.adminUser && !freezrMeta.publisherUser) title = '@' + freezrMeta.userId + '/' + title
   return title
 }
 
 // publishing post
 const HOSTSERVER = encodeURI(window.location.protocol + '//' + window.location.hostname + (window.location.port ? (':' + window.location.port) : ''))
 const PRIVATE_PICT_MID_URL = '/feps/userfiles/com.salmanff.poster'
-const PUBLIC_PICT_MID_URL = '/v1/publicfiles/com.salmanff.poster'
+const PUBLIC_PICT_MID_URL = '/publicfiles'
 const isPrivatePict = (url) => startsWith(url, (HOSTSERVER + PRIVATE_PICT_MID_URL))
 const isPublicPict = (url) => startsWith(url, (HOSTSERVER + PUBLIC_PICT_MID_URL))
 const isPosterLink = (url) => (isPrivatePict(url) || isPublicPict(url))

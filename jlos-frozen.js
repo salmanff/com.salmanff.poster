@@ -519,6 +519,41 @@ JLOS.prototype.queryObjs = function (theList, params, options = {}) {
   // options to add: startAtBeg
   // search params
   // onsole.log(queryObjs)
+  // console.log('quaeryObjs ', params)
+
+  const hasParam = function (object, param, value) {
+    if (!['string', 'number'].includes(typeof value)) {
+      console.error('bad query for ', { object, param, value })
+      // throw new Error('cannot parse non string num vales')
+      return false
+    }
+    if (!object) return false
+    if (typeof param !== 'string') return false
+    // note complex queries not accepted yet
+    if (!object[param] && !value) return true
+    if (typeof object[param] === 'string' || typeof object[param] === 'number') return object[param] === value
+    // note - this could lead to false positive if both key.key exists and 'key.key' exists as a key
+    if (Array.isArray(object[param])) { console.log('array looking for') } /* for arrays of strings/nums */
+    if (Array.isArray(object[param])) { return object[param].includes(value) } /* for arrays of strings/nums */
+    // note only looks up values in arrays - not values within objects within arrays
+    if (param.includes('.')) {
+      const keyChain = param.split('.')
+      const key0 = keyChain.shift()
+      if (key0 === '[]' && Array.isArray(object)) {
+        let found1 = false
+        const key1 = keyChain.shift()
+        object.forEach(objInArray => {
+          if (hasParam(objInArray, key1, value)) found1 = true
+          if (hasParam(objInArray, key1, value)) return true
+        })
+        return found1
+      } else {
+        return hasParam(object[key0], keyChain.join('.'), value)
+      }
+    }
+    return false
+  }
+
   var refList = this.data[theList]
   var objectList = []
   let isCandidate = true
@@ -528,7 +563,9 @@ JLOS.prototype.queryObjs = function (theList, params, options = {}) {
     for (i = refList.length - 1; i > -1; i--) {
       isCandidate = true
       Object.keys(params).forEach(function (aParam) {
-        if (isCandidate && refList[i] && (refList[i][aParam] === params[aParam] || (!refList[i][aParam] && !params[aParam]))) {
+        // console.log('checking ', aParam, refList[i][aParam], ' vs ', params[aParam])
+        // if (isCandidate && refList[i] && (refList[i][aParam] === params[aParam] || (!refList[i][aParam] && !params[aParam]))) {
+        if (isCandidate && hasParam(refList[i], aParam, params[aParam])) {
           isCandidate = true
         } else {
           isCandidate = false
@@ -539,9 +576,38 @@ JLOS.prototype.queryObjs = function (theList, params, options = {}) {
       if (isCandidate && options.getOne) { break }
     }
   }
-  if (options && options.getOne && options.getIndex) return [objectList[0], (isCandidate ? i : -1)]
-  else return objectList
+  if (options.getOne && options.getIndex) return [objectList[0], (isCandidate ? i : -1)]
+  if (options.getOne) return objectList.length > 0 ? objectList[0] : null
+  return objectList
 }
+// JLOS.prototype.queryObjs = function (theList, params, options = {}) {
+//   // options: makeCopy, getOne, includeDeleted, getIndex (only works with getOne and not queryLatest)
+//   // options to add: startAtBeg
+//   // search params
+//   // onsole.log(queryObjs)
+//   var refList = this.data[theList]
+//   var objectList = []
+//   let isCandidate = true
+//   let i
+//   options = options || {}
+//   if (refList && params) {
+//     for (i = refList.length - 1; i > -1; i--) {
+//       isCandidate = true
+//       Object.keys(params).forEach(function (aParam) {
+//         if (isCandidate && refList[i] && (refList[i][aParam] === params[aParam] || (!refList[i][aParam] && !params[aParam]))) {
+//           isCandidate = true
+//         } else {
+//           isCandidate = false
+//         }
+//       })
+//       if (isCandidate) objectList.push((options && options.makeCopy) ? JSON.parse(JSON.stringify(refList[i])) : refList[i])
+//       if (isCandidate && !options.includeDeleted && refList[i].fj_deleted) isCandidate = false
+//       if (isCandidate && options.getOne) { break }
+//     }
+//   }
+//   if (options && options.getOne && options.getIndex) return [objectList[0], (isCandidate ? i : -1)]
+//   else return objectList
+// }
 
 const jlosMarkChanged = function (anItem) {
   if (anItem) anItem.fj_modified_locally = new Date().getTime()

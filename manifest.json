@@ -18,7 +18,7 @@
 
 	"public_pages": {
 		"index": {
-			"page_title":"Poster Blog posts",
+			"page_title":"Poster Blog posts ",
 			"html_file":"poster_papp_page.html",
 			"css_files": ["poster_pages.css"],
 			"initial_data": {"url": "/v1/pdbq/com.salmanff.poster"},
