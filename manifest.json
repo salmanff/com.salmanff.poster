@@ -1,114 +1,114 @@
 {
-
   "identifier": "com.salmanff.poster",
-  "display_name":"Poster",
-  "version": "0.0.301",
-  "description": "A blog posting app with the minimal functionalities",
-	"content_type": "blog",
+  "display_name": "Poster",
+  "version": "2.0.0",
+  "description": "A clean, modern blogging tool for freezr",
+  "content_type": "blog",
   "app_url": "https://github.com/salmanff/com.salmanff.poster",
   "manifest_url": "https://github.com/salmanff/com.salmanff.poster/blob/main/manifest.json",
 
-	"pages": {
-		"index": {
-			"page_title":"Poster",
-			"html_file":"index.html",
-			"css_files": ["static/pell.css","static/font-awesome.min.css", "static/poster_main.css"],
-			"script_files": ["jlos-frozen.js", "pell.js", "poster.js"]
-		}
-	},
+  "pages": {
+    "index": {
+      "page_title": "Poster",
+      "html_file": "index.html",
+      "css_files": ["app.css"],
+      "script_files": ["editor.js", "app.js"],
+      "Description": "Main blog editor — create, edit, and publish posts"
+    }
+  },
 
-	"public_pages": {
-		"index": {
-			"page_title":"Poster Blog posts ",
-			"html_file":"poster_papp_page.html",
-			"css_files": ["poster_pages.css"],
-			"initial_data": {"url": "/v1/pdbq/com.salmanff.poster"},
-			"script_files": ["poster_papp_page.js"],
-			"header_map": {
-				"title":{"field_name":"Recent posts"},
-				"application-description":{"text":"Poster is a simple blog posting tool for freezr"}
-			}
-		},
+  "public_pages": {
+    "index": {
+      "page_title": "Blog",
+      "html_file": "page_list.html",
+      "css_files": ["public.css"],
+      "script_files": ["page_list.js"],
+      "initial_data": {"url": "/v1/pdbq/com.salmanff.poster"},
+      "Description": "Public list of all published blog posts"
+    },
+    "cards": {
+      "page_title": "Blog Cards",
+      "html_file": "page_cards.html",
+      "css_files": ["public.css"],
+      "initial_data": {"url": "public/query", "query": {"doNotList": {"_$ne": true}}},
+      "Description": "Published blog posts",
+      "InternalNote": "Server rendered (mustache template, no JS)"
+    }
+  },
 
-		"post": {
-			"page_title":"Poster blog post",
-			"html_file":"poster_ppage.html",
-			"css_files": ["poster_pages.css"],
-			"script_files": ["poster_ppage.js"],
-			"header_map": {
-				"author":{"field_name":"_data_owner","text":"User:"},
-				"published":{"field_name":"__date_published"},
-				"datePublished":{"field_name":"__date_published"},
-				"title":{"field_name":"title"},
-				"headline":{"field_name":"title"},
-				"name":{"field_name":"title"},
-				"image":{"field_name":"mainimgurl"},
-				"image_src":{"field_name":"mainimgurl"},
-				"description":{"field_name":"summaryText"},
-				"og:site_name":{"text":"Freezr Server"},
-				"og:type":{"text":"Blog Post"},
-				"og:title":{"field_name":"title"},
-				"og:description":{"field_name":"summaryText"},
-				"og:image":{"field_name":"mainimgurl"},
-				"twitter:card":{"field_name":"twitterCard"},
-				"twitter:title":{"field_name":"title"},
-				"twitter:image":{"field_name":"mainimgurl"},
-				"twitter:description":{"field_name":"summaryText"},
-				"application-description":{"text":"Poster is a simple blog posting tool for freezr"}
-			}
-		}
-	},
+  "files": [
+    {"Path": "index.html",          "Description": "Main app shell — sidebar + editor layout"},
+    {"Path": "app.css",             "Description": "All styles for the main editor UI"},
+    {"Path": "editor.js",           "Description": "PosterEditor class — rich text editor component"},
+    {"Path": "app.js",              "Description": "Main app controller — CRUD, publish, state management"},
+    {"Path": "public/postcard.html","Description": "Mustache card template for public post list items"},
+    {"Path": "public/post_page.html","Description": "Mustache template for individual public post view"},
+    {"Path": "public/post_page.js", "Description": "Minimal script for public post page"},
+    {"Path": "public/page_list.html","Description": "Mustache template for public posts list page"},
+    {"Path": "public/page_list.js", "Description": "Script for public list page (load-more navigation)"},
+    {"Path": "public/page_cards.html","Description": "Mustache template for server-rendered card list page (no JS)"},
+    {"Path": "public/public.css",   "Description": "Styles for all public-facing pages"}
+  ],
 
+  "app_tables": {
+    "posts": {
+      "description": "Blog posts",
+      "schema": {
+        "title":       {"type": "String",  "description": "Post title"},
+        "body":        {"type": "String",  "description": "HTML content of the post"},
+        "labels":      {"type": "Array",   "description": "Tags / categories"},
+        "summaryText": {"type": "String",  "description": "Short summary for feeds and cards"},
+        "mainimgurl":  {"type": "String",  "description": "Main image URL"},
+        "twitterCard":      {"type": "String",  "description": "Twitter card type (summary / summary_large_image)"},
+        "picts":            {"type": "Array",   "description": "Private file IDs of images currently in the post body"},
+        "publishedPicts":   {"type": "Array",   "description": "Private file IDs of images that have been published (cannot be deleted until unpublished)"}
+      },
+      "rss_map": {
+        "title":       "title",
+        "description": "summaryText",
+        "pubDate":     "__date_published",
+        "imgurl":      "mainimgurl"
+      },
+      "pcard": "postcard.html",
+      "ppage": {
+        "page_title": "Blog Post",
+        "html_file": "post_page.html",
+        "css_files": ["public.css"],
+        "script_files": ["post_page.js"],
+        "header_map": {
+          "title":                {"field_name": "title"},
+          "description":          {"field_name": "summaryText"},
+          "image":                {"field_name": "mainimgurl"},
+          "author":               {"field_name": "_data_owner", "text": "By:"},
+          "published":            {"field_name": "__date_published"},
+          "og:site_name":         {"text": "Freezr Blog"},
+          "og:type":              {"text": "article"},
+          "og:title":             {"field_name": "title"},
+          "og:description":       {"field_name": "summaryText"},
+          "og:image":             {"field_name": "mainimgurl"},
+          "twitter:card":         {"field_name": "twitterCard"},
+          "twitter:title":        {"field_name": "title"},
+          "twitter:description":  {"field_name": "summaryText"},
+          "twitter:image":        {"field_name": "mainimgurl"}
+        }
+      }
+    }
+  },
 
-	"app_tables": {
-		"posts": {
-			"strictly_Adhere_To_schema":false,
-			"field_names":{
-							"created_locally": {
-								"description":"Date Created (device time)",
-								"type": "date"
-							},
-							"fj_modified_locally": {
-								"description":"Date Modified (device time)",
-								"type": "date"
-							},
-							"fj_deleted": {
-								"description":"deleted",
-								"type": "bool"
-							},
-							"body": {
-								"description":"text of blog",
-								"type": "html"
-							}
-						},
-
-			"rss_map": {
-				"title": "title",
-				"description":"summaryText",
-				"pubDate":"__date_published",
-				"imgurl":"mainimgurl",
-				"imgtitle":"mainimgtxt"
-			}
-
-		}
-	},
-
-	"permissions": [
-		 {
+  "permissions": [
+    {
       "name": "publish_posts",
-			"type":"share_records",
-			"table_id": "com.salmanff.poster.posts",
-			"description": "Publish your posts",
-			"return_fields": ["title","shortbody","_owner","labels","body","_date_Modified", "summaryText","mainimgurl","mainimgtxt"],
-			"search_fields": ["title","body","labels"],
-			"pcard":"postcard.html",
-			"ppage":"post"
-		},
-		{
-      "name":"publish_picts",
-			"type":"share_records",
-			"table_id": "com.salmanff.poster.files",
-			"description": "Publish your files"
-		}
-	]
+      "type": "share_records",
+      "table_id": "com.salmanff.poster.posts",
+      "description": "Publish your blog posts publicly",
+      "return_fields": ["title", "body", "labels", "summaryText", "mainimgurl", "twitterCard", "_date_modified"],
+      "search_fields": ["title", "body", "labels"]
+    },
+    {
+      "name": "publish_images",
+      "type": "share_records",
+      "table_id": "com.salmanff.poster.files",
+      "description": "Share images embedded in your posts"
+    }
+  ]
 }

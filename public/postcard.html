@@ -1,36 +1,11 @@
-
-
-<div style='font-family: "Lucida Sans Unicode", "Helvetica Neue", "Arial", sans-serif; font-size: 14px; padding:5px;'>
-	<div id="{{_id}}">
-
-    <div  style="font-size:36px; font-weight: bold; color:#3f51b5; margin-top: 24px;">
-      <a href="/{{_id}}">
-      {{#title}}{{title}}{{/title}}</a>
-    </div>
-
-
-    <style type="text/css">
-      @media all and (max-width: 450px) {.com_salmanff_poster_pix_holder {width:100%;}}
-      @media all and (min-width: 451px) {.com_salmanff_poster_pix_holder {max-width:250px;}};
-    </style>
-
-    <div class="com_salmanff_poster_pix_holder" style="text-align: center; max-height: 200px; overflow: hidden;display:{{^mainimgurl}}none;{{/mainimgurl}}{{#mainimgurl}}block; margin-right:5px;{{/mainimgurl}} float:right;"><img src="{{mainimgurl}}" width="80%" ></div>
-
-    <div class="" style="font-size:18px; color:grey;">{{#summaryText}} {{{summaryText}}} {{/summaryText}}
-      {{^summaryText}}{{{body}}}{{/summaryText}}
-
-      <br>
-
-      <a href="/{{_id}}">...</a>
-      <br>
-
-    </div>
-
+<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;padding:12px 0;border-bottom:1px solid #e2e8f0;">
+  <div style="font-size:20px;font-weight:700;color:#0891b2;margin-bottom:6px;">
+    <a href="/{{_id}}" style="color:#0891b2;text-decoration:none;">{{#title}}{{title}}{{/title}}{{^title}}Untitled{{/title}}</a>
   </div>
-
-	<div class="info_freezr_vulog_pix_holder" style="text-align: center; max-height: 200px; overflow: hidden;display:{{^mainImage}}none;{{/mainImage}}{{#mainImage}}block; margin-right:5px;{{/mainImage}} float:left;"><img src="{{mainImage}}" width="100%" ></div>
-
-	<div style="color:grey;{{^labels}}display:none{{/labels}}">
-		labels: {{#labels}} {{.}}{{/labels}}
-	</div>
+  {{#body}}
+  <div>{{{body}}}</div>
+  {{/body}}
+  <div style="color:#94a3b8;font-size:12px;">
+    {{#labels}}<span style="background:#f1f5f9;border-radius:4px;padding:2px 7px;margin-left:4px;color:#64748b;">{{.}}</span>{{/labels}}
+  </div>
 </div>

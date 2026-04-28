@@ -1,0 +1,1 @@
+// public post page — no dynamic behaviour needed

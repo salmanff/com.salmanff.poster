@@ -1,130 +1,125 @@
-	<!--
-	poster index.html - a simply blog posting app for
-	 -->
-		<div id="warnings" class="warnings_mobile" style="display:none"></div>
+<div id="app">
 
-		<div class="writing_outer">
-			<div id="writingDiv">
-			<div id="writingTopButts">
-				<div id="writingTopButtsInner">
-					<span class="fa fa-bars clickable topBut_Desktop" id="click_menu_0" >&nbsp;</span>
-					<span class="clickable topText_DesktopLeft" id="click_menu_1">Menu &nbsp; &nbsp; &nbsp; </span>
-					<span class="fa fa-eye clickable topBut_Desktop" id="click_chgView_0" >&nbsp;</span>
-					<span class="clickable topText_DesktopLeft" id="click_chgView_1">Change View &nbsp; &nbsp; &nbsp; </span>
+  <!-- ── Sidebar ── -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">Poster</span>
+      <button id="btn-new-post" class="btn btn-new" title="New post">+ New</button>
+    </div>
 
-					<span class="fa fa-trash clickable topBut_Desktop" id="click_delete_0" >&nbsp;</span>
-					<span class="clickable topText_DesktopLeft" id="click_delete_1">delete &nbsp; &nbsp; &nbsp; </span>
+    <div class="sidebar-search">
+      <input id="search-input" type="text" placeholder="Search posts…" autocomplete="off" />
+    </div>
 
-					<span class="fa fa-save topBut_Desktop clickable" id="click_save_0" >&nbsp;</span>
-					<span class="topText_DesktopLeft clickable" id="click_save_1">save &nbsp; &nbsp; &nbsp; </span>
+    <div id="posts-list" class="posts-list">
+      <div class="posts-loading">Loading…</div>
+    </div>
+  </aside>
 
-					<span class="fa fa-remove clickable topBut_Desktop " id="click_unpublish_0" >&nbsp;</span>
-					<span class="topText_DesktopLeft clickable" id="click_unpublish_1">unPublish</span>
+  <!-- ── Main area ── -->
+  <main id="main-area" class="main-area">
 
-					<span class="fa fa-upload clickable topBut_Desktop fright" id="click_publish_0" >&nbsp;</span>
-					<span class="clickable topText_DesktopRight fright" id="click_publish_1">Publish</span>
-					<span class="clickable topText_DesktopRight fright" id="click_publish_2">Republish</span>
+    <!-- Empty state -->
+    <div id="no-post-selected" class="empty-state">
+      <div class="empty-icon">✍️</div>
+      <p>Select a post from the sidebar or create a new one.</p>
+    </div>
 
-				</div>
-			</div>
-			<div id="editView">
-				<div class="oneliner title_Desktop"  contentEditable=true id="titleDiv" data-placeholder="Blog post title"></div>
-				<div id="pell-editor"class="editor_Desktop"></div>
-				<div class="oneliner label_Desktop" contentEditable=true id="labelDiv" data-placeholder="tags (optional)"></div>
-			</div>
-			<div id="pubView">
-				<div id="pubViewTitle"></div>
-				<div id="pubViewBody"></div>
-				<div id="pubViewLabels"></div>
-			</div>
+    <!-- Editor panel -->
+    <div id="post-editor" class="post-editor" style="display:none">
 
-			<div id="postMetaDiv"> &nbsp; Date Modified: </div>
-		</div>
-
-		</div>
-
-		<div id="click_menuBackGround">
-		</div>
-
-		<div id="click_dialogueBackGround" style="display:none">
-			<div id="dialogue_Inner">
-				<div id="dialogue_instruct1" class="dialogue_text"></div>
-
-		 		<div id="dialogue_uploader"> <input  id="picture_file" type="file" name="file"/></div>
-		 		<div>
-			 		<span id="click_uploadPict" class ="dialogueButts" >Upload now</span>
-		 		</div>
-
-		 		<div id="dialogue_imggallery">IMAGE GALLERY</div>
-
-				<div id="dialogue_instruct2" class="dialogue_text"></div>
-
-				<div class="oneliner" id="dialogue_inputText" contentEditable=true></div>
-
-				<form id="dialogue_pictSize" name="pictSizeRadioForm" class="dialogue_text">
-					<div class="dialogue_radioCaption">Size of Picture:</div>
-					<input class="pictsRadio" type="radio" name="pictSizeRadio" value="100%" checked="checked">100%
-					<input class="pictsRadio" type="radio" name="pictSizeRadio" value="75%">75%
-					<input class="pictsRadio" type="radio" name="pictSizeRadio" value="50%">50%
-					<input class="pictsRadio" type="radio" name="pictSizeRadio" value="10%">10%
-				</form>
-				<form id="dialogue_pictFloat"class="dialogue_text" name="pictFloatRadioForm">
-					<div  class="dialogue_radioCaption">Wrap text:</div>
-					<input class="pictsRadio" type="radio" name="pictFloatRadio" value="none" checked="checked">No
-					<input class="pictsRadio" type="radio" name="pictFloatRadio" value="left">right of picture
-					<input class="pictsRadio" type="radio" name="pictFloatRadio" value="right">left of picture
-				</form>
-
-				<div id="dialogue_checkUniqueness">
-					<span class ="dialogueButts" id="dialogue_checkUniqueButt">&nbsp; Check Uniquness of ID &nbsp;</span>
-					<br>
-				</div>
-
-				<div id ="dialogue_okays" class="dialogue_center">
-					<span class ="dialogueButts" id="dialogue_cancelButt">Cancel</span>
-					<span class ="dialogueButts" id="dialogue_okButt">&nbsp; &nbsp; OK &nbsp; &nbsp;</span>
-				</div>
-		  	</div>
-
-		</div>
-
-
-		<div id="leftBar" class="leftBar_Desktop">
-			<div id="listingTopButts" style="display:none">
-				<span class="topText_Desktop"><img src="/app_files/com.salmanff.poster/static/logo.png" height="40px"></span>
-				<span class="fa fa-plus clickable topBut_Desktop fright" id="click_newPost_0" >&nbsp;</span>
-				<span class="clickable topText_Desktop fright" id="click_newPost_1">Write a New Blog Post</span>
-			</div>
-
-			<div id="searchOuter" class="leftBarActionsOuter" style="display:none">
-				<div class="oneliner" id="searchBoxDiv" contentEditable=true></div>
-
-				<div class="leftBarSearchButts clickable"  id="click_doSearch">Search</div>
-				<div class="leftBarSearchButts clickable" style="display:none" id="click_clearSearch">Clear results</div>
-			</div>
-
-			<div id="pubOrDraftOuter" class="leftBarActionsOuter" style="display:none">
-			<input id="radioShow_Drafts" class="showRadio" type="radio" name="editList" value="showDrafts">Show Drafts Only
-			<input id="radioShow_Pub" class="showRadio" type="radio" name="editList" value="showPub">Published Posts Only
-			<input id="radioShow_all" class="showRadio" type="radio" name="editList" value="showAll" checked="checked">Show All
-			</div>
-
-			<div id="leftPostsList" class="leftBarActionsOuter" style="display:none"> </div>
-
-			<div class="spacer"> </div>
-
-			<div id="onlineSearchedPostsList"></div>
-
-			<div class="leftBarSearchButts clickable" id="click_searchOnline_1" style="display:none">More Online</div>
-
-      <div class="leftBarActionsOuter" id="startsyncloader" align="center">
-        <div > <br> Hold on... Syncing with server... <br><br></div>
-        <img src="/app_files/@public/info.freezr.public/public/static/ajaxloaderBig.gif" alt="">
+      <!-- Top bar -->
+      <div class="editor-topbar">
+        <button id="btn-sidebar-toggle" class="btn btn-icon" title="Toggle sidebar">☰</button>
+        <span id="status-text" class="status-text"></span>
+        <div class="topbar-actions">
+          <button id="btn-delete"    class="btn btn-ghost btn-danger-txt">Delete</button>
+          <button id="btn-save"      class="btn btn-secondary">Save</button>
+          <button id="btn-unpublish" class="btn btn-secondary" style="display:none">Unpublish</button>
+          <button id="btn-publish"   class="btn btn-primary">Publish</button>
+        </div>
       </div>
 
+      <!-- Title & tags -->
+      <div class="post-header-area">
+        <input id="post-title" class="post-title-input" type="text"
+               placeholder="Post title" autocomplete="off" />
+        <input id="post-tags"  class="post-tags-input"  type="text"
+               placeholder="Tags (space-separated)" autocomplete="off" />
+      </div>
 
-		</div>
+      <!-- Rich-text editor -->
+      <div id="editor-container" class="editor-wrapper"></div>
 
-		<div id="pastebin" style="display:none"><span> </span></div>
+      <!-- Meta bar -->
+      <div id="post-meta" class="post-meta-bar"></div>
 
-		<div id="finalView"></div>
+    </div><!-- /post-editor -->
+
+  </main><!-- /main-area -->
+
+  <!-- ── Image modal ── -->
+  <div id="image-modal" class="modal" style="display:none" role="dialog" aria-modal="true">
+    <div id="image-modal-backdrop" class="modal-backdrop"></div>
+    <div class="modal-box">
+      <h3 class="modal-title">Insert Image</h3>
+
+      <div class="modal-tabs">
+        <button class="tab-btn active" data-tab="upload">Upload file</button>
+        <button class="tab-btn" data-tab="url">From URL</button>
+      </div>
+
+      <div id="img-tab-upload" class="tab-pane">
+        <label class="file-drop-zone">
+          <input type="file" id="image-file-input" accept="image/*" />
+          <span>Click to choose an image or drag &amp; drop</span>
+        </label>
+        <div id="upload-preview" class="upload-preview"></div>
+      </div>
+
+      <div id="img-tab-url" class="tab-pane" style="display:none">
+        <input type="text" id="image-url-input" placeholder="https://example.com/photo.jpg" />
+      </div>
+
+      <div class="modal-actions">
+        <button id="btn-insert-image"  class="btn btn-primary">Insert</button>
+        <button id="btn-cancel-image"  class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Publish modal ── -->
+  <div id="publish-modal" class="modal" style="display:none" role="dialog" aria-modal="true">
+    <div id="publish-modal-backdrop" class="modal-backdrop"></div>
+    <div class="modal-box">
+      <h3 id="publish-modal-title" class="modal-title">Publish Post</h3>
+
+      <div class="form-group">
+        <label for="publish-summary">Summary <small>(shown in feeds &amp; previews)</small></label>
+        <textarea id="publish-summary" rows="4"
+                  placeholder="A short description of your post…"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="publish-image-url">Main image URL <small>(optional — leave blank to auto-detect)</small></label>
+        <input type="text" id="publish-image-url" placeholder="https://…" />
+      </div>
+
+      <div class="form-group">
+        <label for="publish-date">Publish date</label>
+        <input type="datetime-local" id="publish-date" />
+      </div>
+
+      <div id="publish-status-msg" class="publish-status-msg"></div>
+
+      <div class="modal-actions">
+        <button id="btn-confirm-publish" class="btn btn-primary">Publish now</button>
+        <button id="btn-cancel-publish"  class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Toast notification ── -->
+  <div id="notification" class="notification" style="display:none" role="status"></div>
+
+</div><!-- /#app -->

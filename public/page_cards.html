@@ -1,0 +1,34 @@
+<div style="max-width:760px;margin:0 auto;padding:20px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <h1 style="font-size:2em;font-weight:700;color:#0f172a;margin-bottom:6px;">
+    <span class="freezr_public_app_title">Blog Posts</span>
+  </h1>
+  <p style="color:#64748b;margin-bottom:28px;">Server-rendered cards</p>
+
+  {{#results}}
+  <div style="margin-bottom:28px;padding:16px 20px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;">
+    <div style="font-size:20px;font-weight:700;margin-bottom:6px;">
+      <a href="/{{_id}}" style="color:#0891b2;text-decoration:none;">
+        {{#title}}{{title}}{{/title}}{{^title}}Untitled{{/title}}
+      </a>
+    </div>
+    <div style="color:#94a3b8;font-size:12px;margin-bottom:10px;">
+      Posted by <strong>{{_data_owner}}</strong> &middot; {{__date_published}}
+    </div>
+    {{#body}}
+    <details>
+      <summary style="color:#0891b2;cursor:pointer;font-size:13px;font-weight:600;margin-bottom:6px;">Show full post</summary>
+      <div style="color:#475569;font-size:15px;line-height:1.65;margin-top:8px;">
+        {{{body}}}
+      </div>
+    </details>
+    {{/body}}
+    {{#labels}}
+    <span style="background:#f1f5f9;border-radius:4px;padding:2px 7px;margin-right:4px;color:#64748b;font-size:12px;">{{.}}</span>
+    {{/labels}}
+  </div>
+  {{/results}}
+
+  {{^results}}
+  <div style="color:#94a3b8;padding:40px 0;text-align:center;">No posts found.</div>
+  {{/results}}
+</div>
